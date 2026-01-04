@@ -1,0 +1,96 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Smruti Singha">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="input.css">
+  <title>Check Your Weather, from anywhere!</title>
+</head>
+
+<body id="appBg" class="daynight font-bold font-arial text-3xl">
+
+  <!-- Header -->
+  <header class="text-3xl bg-blue-500 text-white mb-6 justify-center flex p-4 ">
+    Weather Forecast
+  </header>
+
+  <!-- Search Section -->
+  <section class="text-white p-6 max-w-xl">
+    <div class="lg:w-100 p-6 flex items-center gap-9 lg:flex-row sm:p-6">
+      <input id="cityInput" type="text"
+        placeholder="Enter city name"
+        class="flex px-2 py-1 width-full border-2 text-gray-600 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400" />
+
+      <button id="searchBtn"
+        class="bg-sky-500 text-white rounded-lg hover:bg-green-300 transition flex p-2 gap-7">
+        Search
+      </button>
+    </div>
+
+     <div class="flex items-center my-6 max-w-md">
+      <div class="flex-grow border-t border-dotted text-white"></div>
+      <span class="mx-3 text-white font-semibold">OR</span>
+      <div class="flex-grow border-t border-dotted text-white gap-7"></div>
+    </div>
+
+    <!-- Current Location -->
+     <div>
+    <button id="locationBtn"
+      class="flex items-center width-full bg-indigo-400 p-2 rounded hover:bg-emerald-800 gap-7">
+       Current Location
+    </button>
+</div>
+
+<!-- Recently searched Cities -->
+ <div>
+    <select id="recentlySearchedCities" class="hidden p-2 rounded text-gray-300"></select>
+</div>
+    <!-- Error Message -->
+    <p id="errorMsg" class="hidden bg-red-500 p-2 rounded text-center"></p>
+  </section>
+
+  <!-- Today Weather Card -->
+  <section id="todayCard"
+    class=" flex items-center gap-8 flex-wrap absolute top-56 right-56 text-white bg-sky-400 p-7 rounded-xl max-w-md">
+
+    <h2 id="cityName" class=" text-3xl font-bold"></h2>
+
+    <div class="flex justify-end items-center mt-4">
+      <div>
+        <div>
+        <p id="temperature" class="text-3xl font-bold text-amber-300"></p>
+        </div>
+        <div>
+        <button id="unitToggle" class="absolute top-3 right-3 underline text-sm">Switch °F / °C</button>
+        </div>
+        <div>
+        <p id="weatherDesc" class=" text-lg mt-2"></p>
+        </div>
+        <div>
+        <p id="alertMsg" class="text-red-200 font-bold "></p>
+        </div>
+      </div>
+
+      <img id="weatherIcon" class="p-4 w-20 h-20 " />
+    </div>
+
+    <div class="flex gap-4 mt-4">
+      <p>💧Humidity: <span id="humidity"></span>%</p>
+      <p>🌬 Wind: <span id="wind"></span> m/s</p>
+    </div>
+  </section>
+
+  <!-- 5-Day Forecast -->
+  <section class="max-w-5xl mx-auto mt-10 p-6">
+    <h2 class="text-white text-4xl font-bold mb-4">5-Day Forecast</h2>
+    <div id="forecast" class="grid grid-cols-2 sm:grid-cols-5 gap-4"></div>
+  </section>
+
+  <script src="index.js"></script>
+</body>
+</html>
