@@ -12,85 +12,79 @@
   <title>Check Your Weather, from anywhere!</title>
 </head>
 
-<body id="appBg" class="daynight font-bold font-arial text-3xl">
+<body id="appBg" class="daynight bg-[#0f172a] text-white min-h-screen p-6">
 
-  <!-- Header -->
-  <header class="text-3xl bg-blue-500 text-white mb-6 justify-center flex p-4 ">
+  <!-- HEADER (full width top) -->
+  <header class="col-span-2 text-center bg-blue-800 text-white p-6 text-2xl rounded-xl rounded-[20px]">
     Weather Forecast
   </header>
 
-  <!-- Search Section -->
-  <section class="text-white p-6 max-w-xl">
-    <div class="lg:w-100 p-6 flex items-center gap-9 lg:flex-row sm:p-6">
-      <input id="cityInput" type="text"
-        placeholder="Enter city name"
-        class="flex px-2 py-1 width-full border-2 text-gray-600 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400" />
+  <!-- MAIN GRID -->
+  <div class="grid grid-cols-2 grid-rows-2 gap-8 p-6 h-[90vh] items-center">
 
-      <button id="searchBtn"
-        class="bg-sky-500 text-white rounded-lg hover:bg-green-300 transition flex p-2 gap-7">
-        Search
-      </button>
-    </div>
+    <!-- 🔵 TOP LEFT (Search Section) -->
+<section class="bg-gray-800 text-white p-6 rounded-xl flex flex-col items-center justify-center gap-7">
 
-     <div class="flex items-center my-6 max-w-md">
-      <div class="flex-grow border-t border-dotted text-white"></div>
-      <span class="mx-3 text-white font-semibold">OR</span>
-      <div class="flex-grow border-t border-dotted text-white gap-7"></div>
-    </div>
+  <input id="cityInput" type="text"
+    placeholder="Enter city name"
+    class="p-2 text-white rounded-xl w-1/2 border-2 border-gray-300" />
 
-    <!-- Current Location -->
-     <div>
-    <button id="locationBtn"
-      class="flex items-center width-full bg-indigo-400 p-2 rounded hover:bg-emerald-800 gap-7">
-       Current Location
-    </button>
-</div>
+  <button id="searchBtn"
+    class="bg-sky-600 px-5 py-2 rounded-xl hover:bg-green-400 w-fit">
+    Search
+  </button>
 
-<!-- Recently searched Cities -->
- <div>
-    <select id="recentlySearchedCities" class="hidden p-2 rounded text-gray-300"></select>
-</div>
-    <!-- Error Message -->
-    <p id="errorMsg" class="hidden bg-red-500 p-2 rounded text-center"></p>
-  </section>
+  <div class="text-center font-bold text-xl my-2">
+    ------ OR ------
+  </div>
 
-  <!-- Today Weather Card -->
-  <section id="todayCard"
-    class=" flex items-center gap-8 flex-wrap absolute top-56 right-56 text-white bg-sky-400 p-7 rounded-xl max-w-md">
+  <button id="locationBtn"
+    class="bg-sky-400 px-5 py-2 rounded-xl hover:bg-emerald-700 w-fit">
+    Current Location
+  </button>
 
-    <h2 id="cityName" class=" text-3xl font-bold"></h2>
+  <p id="errorMsg"
+    class="hidden bg-red-500 p-2 rounded text-center w-full mt-2">
+  </p>
 
-    <div class="flex justify-end items-center mt-4">
-      <div>
-        <div>
-        <p id="temperature" class="text-3xl font-bold text-amber-300"></p>
-        </div>
-        <div>
-        <button id="unitToggle" class="absolute top-3 right-3 underline text-sm">Switch °F / °C</button>
-        </div>
-        <div>
-        <p id="weatherDesc" class=" text-lg mt-2"></p>
-        </div>
-        <div>
-        <p id="alertMsg" class="text-red-200 font-bold "></p>
-        </div>
+</section>
+
+    <!-- 🔵 TOP RIGHT (Today Weather Card) -->
+    <section id="todayCard"
+      class=" text-white p-6 rounded-xl flex flex-col gap-4">
+
+  <div class="flex items-center justify-between">
+    <h2 id="cityName" class="text-5xl"></h2>
+    <h2 id="temperature" class="text-6xl text-yellow-300"></h2>
+    <img id="weatherIcon" class="w-20 h-20" />
+  </div>
+      
+
+        <p id="weatherDesc"></p>
+      <p id="alertMsg" class="text-red-200 text-2xl"></p>
+
+      <div class="flex gap-4 text-2xl justify-center">
+        <p>💧 <span id="humidity"></span>%</p>
+        <p>🌬 <span id="wind"></span> m/s</p>
       </div>
+    </section>
 
-      <img id="weatherIcon" class="p-4 w-20 h-20 " />
-    </div>
+   <!-- 🔵 BOTTOM LEFT (Recent / Extra Section) -->
+<div class="flex justify-center items-center">
+  <select id="recentlySearchedCities"
+    class="hidden p-2 rounded-xl bg-gray-300 hover:bg-gray-400 text-black w-1/3 font-bold text-xl">
+  </select>
+</div>
 
-    <div class="flex gap-4 mt-4">
-      <p>💧Humidity: <span id="humidity"></span>%</p>
-      <p>🌬 Wind: <span id="wind"></span> m/s</p>
-    </div>
-  </section>
+    <!-- 🔵 BOTTOM RIGHT (5-Day Forecast) -->
+<section class=" p-6 rounded-xl flex flex-col justify-end">
+  <h2 class="text-xl mb-4">5-Day Forecast</h2>
+  <div id="forecast" class="flex flex-col text-center gap-2 w-full"></div>
+</section>
+    
+    </section>
 
-  <!-- 5-Day Forecast -->
-  <section class="max-w-5xl mx-auto mt-10 p-6">
-    <h2 class="text-white text-4xl font-bold mb-4">5-Day Forecast</h2>
-    <div id="forecast" class="grid grid-cols-2 sm:grid-cols-5 gap-4"></div>
-  </section>
+  </div>
 
   <script src="index.js"></script>
 </body>
-</html>
